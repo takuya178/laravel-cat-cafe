@@ -18,5 +18,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/contact', [ContactController::class, 'index'])->name(name: 'contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
 Route::get('/contact/complete', [ContactController::class, 'complete'])->name(name: 'contact.complete');
