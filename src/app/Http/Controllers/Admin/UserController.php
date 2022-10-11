@@ -1,4 +1,9 @@
-<?php
+t->validated();
+        $validated['image'] = $request->file('image')->store('users', 'public');
+        $validated['password'] = Hash::make($validated['password']);
+        User::create($validated);
+
+        return back()->with('success', 'ユーザを登録しました');<?php
 
 namespace App\Http\Controllers\Admin;
 
@@ -27,7 +32,6 @@ class UserController extends Controller
     {
         return view('admin.user.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *

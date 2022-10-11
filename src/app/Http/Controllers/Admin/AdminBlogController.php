@@ -13,7 +13,8 @@ class AdminBlogController extends Controller
     public function index()
     {
         $blogs = Blog::all();
-        return view("admin.blogs.index", ['blogs' => $blogs]);
+        $user = Auth::user();
+        return view("admin.blogs.index", ['blogs' => $blogs, 'user' => $user]);
     }
 
     public function create()
