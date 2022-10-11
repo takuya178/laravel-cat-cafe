@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Admin\AdminBlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('/contact/complete', [ContactController::class, 'complete'])->name(name: 'contact.complete');
+
+Route::get("/admin/blogs", [AdminBlogController::class, 'index'])->name('admin.blogs');
+Route::get("/admin/blogs/create", [AdminBlogController::class, 'create'])->name('admin.create');
+Route::get('edit/{id}', [AdminBlogController::class, 'edit'])->name('admin.edit');

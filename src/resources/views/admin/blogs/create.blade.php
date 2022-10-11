@@ -4,7 +4,8 @@
 <section class="py-8">
     <div class="container px-4 mx-auto">
         <div class="py-4 bg-white rounded">
-            <form>
+            <form action="{{ route('admin.blogs.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="flex px-6 pb-4 border-b">
                     <h3 class="text-xl font-bold">ブログ登録</h3>
                     <div class="ml-auto">
@@ -14,13 +15,13 @@
 
                 <div class="pt-4 px-6">
                     <!-- ▼▼▼▼エラーメッセージ▼▼▼▼　-->
-                    <div class="mb-8 py-4 px-6 border border-red-300 bg-red-50 rounded">
+                    @if($errors->any())
+                    <div class="mb-8 py-4 px-6 border border-pink-300 bg-pink-50 rounded"> 
                         <ul>
-                            <li class="text-red-400">タイトルは、必ず指定してください。</li>
-                            <li class="text-red-400">画像は、必ず指定してください。</li>
-                            <li class="text-red-400">本文は、必ず指定してください。</li>
+                            @foreach($errors->all() as $error)
+                                <li class="text-pink-400">{{ $error }}</li>
+                            @endforeach
                         </ul>
-                    </div>
                     <!-- ▲▲▲▲エラーメッセージ▲▲▲▲　-->
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="title">タイトル</label>
