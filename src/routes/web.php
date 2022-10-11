@@ -29,3 +29,6 @@ Route::get("/admin/blogs", [AdminBlogController::class, 'index'])->name('admin.b
 Route::get("/admin/blogs/create", [AdminBlogController::class, 'create'])->name('admin.create');
 Route::get('edit/{id}', [AdminBlogController::class, 'edit'])->name('admin.edit');
 Route::put('/admin/blogs/{blog}', [AdminBlogController::class, 'update'])->name('admin..blogs.update');
+
+Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin..users.create');
+
