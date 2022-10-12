@@ -6,7 +6,7 @@
         <div class="flex px-6 pb-4 border-b">
             <h2 class="text-xl font-bold">ブログ一覧</h2>
             <div class="ml-auto">
-                <a href="/admin/blogs/create" class="py-2 px-3 text-xs text-white font-semibold bg-indigo-500 rounded-md">新規投稿</a>
+                <a href="{{ route('admin.create') }}" class="py-2 px-3 text-xs text-white font-semibold bg-indigo-500 rounded-md">新規投稿</a>
             </div>
         </div>
         <div class="pt-4 px-4 overflow-x-auto">
