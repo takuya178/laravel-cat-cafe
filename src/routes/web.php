@@ -25,10 +25,20 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 
 Route::get('/contact/complete', [ContactController::class, 'complete'])->name(name: 'contact.complete');
 
-Route::get("/admin/blogs", [AdminBlogController::class, 'index'])->name('admin.blogs');
-Route::get("/admin/blogs/create", [AdminBlogController::class, 'create'])->name('admin.create');
-Route::get('edit/{id}', [AdminBlogController::class, 'edit'])->name('admin.edit');
-Route::put('/admin/blogs/{blog}', [AdminBlogController::class, 'update'])->name('admin..blogs.update');
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get("/blogs", [AdminBlogController::class, 'index'])->name('blogs')->middleware(('auth'));
+        Route::get("/blogs/create", [AdminBlogController::class, 'create'])->name('.create');
+        Route::get("/blogs", [AdminBlogController::class, 'store'])->name('stoere');
+        Route::get('edit/{id}', [AdminBlogController::class, 'edit'])->name('edit');
+        Route::put('/blogs/{blog}', [AdminBlogController::class, 'update'])->name('blogs.update');
+        Route::put('/blogs/{blog}', [AdminBlogController::class, 'destroy'])->name('destroy');
+    });
 
+
+Route::get('/admin/login', [AuthController::class, 'showLoginForm'])->name('admin.login')->middleware('guest');
+Route::post('/admin/login', [AuthController::class, 'login']);
 Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin..users.create');
 
